@@ -29,6 +29,7 @@
             color: white;
             font-weight: 600;
         }
+        .text-danger { font-size: 0.8rem; }
     </style>
 </head>
 <body>
@@ -37,13 +38,14 @@
     <h3 class="text-center mb-4">Update Profile</h3>
     
     <form th:action="@{/add}" th:object="${student}" method="post">
+        
         <input type="hidden" th:field="*{id}">
 
-		<div class="col-md-3">
-		    <label class="form-label small fw-bold">Student Name</label>
-		    <input type="text" name="studentName" class="form-control" placeholder="Full Name">
-		    <div th:if="${#fields.hasErrors('studentName')}" th:errors="*{studentName}" class="text-danger sx-small"></div>
-		</div>
+        <div class="mb-3">
+            <label class="form-label small fw-bold">Student Name</label>
+            <input type="text" th:field="*{studentName}" class="form-control" placeholder="Full Name">
+            <div th:if="${#fields.hasErrors('studentName')}" th:errors="*{studentName}" class="text-danger"></div>
+        </div>
 
         <div class="row">
             <div class="col-md-6 mb-3">
@@ -64,15 +66,16 @@
             <label class="form-label small fw-bold text-muted">Course</label>
             <input type="text" th:field="*{course}" class="form-control" required>
         </div>
-		<div class="col-md-2">
-		    <label class="form-label small fw-bold">Phone</label>
-		    <input type="tel" name="phoneNumber" class="form-control" placeholder="10 Digits">
-		    <div th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="text-danger sx-small"></div>
-		</div>
 
-        <div class="d-grid gap-2">
+        <div class="mb-3">
+            <label class="form-label small fw-bold">Phone</label>
+            <input type="tel" th:field="*{phoneNumber}" class="form-control" placeholder="10 Digits">
+            <div th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="text-danger"></div>
+        </div>
+
+        <div class="d-grid gap-2 mt-4">
             <button type="submit" class="btn btn-update p-2">Save Changes</button>
-            <a href="/" class="btn btn-light text-muted p-2">Go Back</a>
+            <a th:href="@{/students}" class="btn btn-light text-muted p-2">Go Back</a>
         </div>
     </form>
 </div>

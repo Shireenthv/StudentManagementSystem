@@ -62,7 +62,7 @@ public class StudentController {
      
     
     @PostMapping("/add")
-    public String add(@Validated @ModelAttribute("Student") Student s , BindingResult result,Model model, RedirectAttributes ra) {
+    public String add(@Validated @ModelAttribute("student") Student s , BindingResult result,Model model, RedirectAttributes ra) {
         
     	    if(result.hasErrors()) {
     	    	model.addAttribute("listStudents",service.getAllStudents());
